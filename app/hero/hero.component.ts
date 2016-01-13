@@ -1,9 +1,5 @@
 import {Component} from 'angular2/core';
-
-interface Hero {
-  id: number;
-  name: string;
-}
+import {Hero} from './hero';
 
 var HEROES: Hero[] = [
   { "id": 11, "name": "Mr. Nice" },
