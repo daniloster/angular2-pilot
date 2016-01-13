@@ -1,5 +1,10 @@
 import {Component} from 'angular2/core';
 
+interface Hero {
+  id: number;
+  name: string;
+}
+
 var HEROES: Hero[] = [
   { "id": 11, "name": "Mr. Nice" },
   { "id": 12, "name": "Narco" },
@@ -12,11 +17,6 @@ var HEROES: Hero[] = [
   { "id": 19, "name": "Magma" },
   { "id": 20, "name": "Tornado" }
 ];
-
-interface Hero {
-  id: number;
-  name: string;
-}
 
 @Component({
     selector:'hero',
