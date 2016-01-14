@@ -23,7 +23,8 @@ System.register(['angular2/core'], function(exports_1) {
                     core_1.Component({
                         selector: 'hero-detail',
                         templateUrl: '/app/hero/detail/hero-detail.component.html',
-                        styleUrls: ['app/hero/detail/hero-detail.component.css']
+                        styleUrls: ['app/hero/detail/hero-detail.component.css'],
+                        inputs: ['hero']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], HeroDetailComponent);

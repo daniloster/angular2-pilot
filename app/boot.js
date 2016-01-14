@@ -1,5 +1,5 @@
-System.register(['angular2/platform/browser', './greeting/greeting.component', './hero/hero.component'], function(exports_1) {
-    var browser_1, greeting_component_1, hero_component_1;
+System.register(['angular2/platform/browser', './greeting/greeting.component', './hero/detail/hero-detail.component', './hero/hero.component'], function(exports_1) {
+    var browser_1, greeting_component_1, hero_detail_component_1, hero_component_1;
     return {
         setters:[
             function (browser_1_1) {
@@ -8,11 +8,15 @@ System.register(['angular2/platform/browser', './greeting/greeting.component', '
             function (greeting_component_1_1) {
                 greeting_component_1 = greeting_component_1_1;
             },
+            function (hero_detail_component_1_1) {
+                hero_detail_component_1 = hero_detail_component_1_1;
+            },
             function (hero_component_1_1) {
                 hero_component_1 = hero_component_1_1;
             }],
         execute: function() {
             browser_1.bootstrap(greeting_component_1.GreetingComponent);
+            browser_1.bootstrap(hero_detail_component_1.HeroDetailComponent);
             browser_1.bootstrap(hero_component_1.HeroComponent);
         }
     }

@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './detail/hero-detail.component', './hero.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,45 +8,44 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var HEROES, HeroComponent;
+    var core_1, hero_detail_component_1, hero_service_1;
+    var HeroComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (hero_detail_component_1_1) {
+                hero_detail_component_1 = hero_detail_component_1_1;
+            },
+            function (hero_service_1_1) {
+                hero_service_1 = hero_service_1_1;
             }],
         execute: function() {
-            HEROES = [
-                { "id": 11, "name": "Mr. Nice" },
-                { "id": 12, "name": "Narco" },
-                { "id": 13, "name": "Bombasto" },
-                { "id": 14, "name": "Celeritas" },
-                { "id": 15, "name": "Magneta" },
-                { "id": 16, "name": "RubberMan" },
-                { "id": 17, "name": "Dynama" },
-                { "id": 18, "name": "Dr IQ" },
-                { "id": 19, "name": "Magma" },
-                { "id": 20, "name": "Tornado" }
-            ];
             HeroComponent = (function () {
-                function HeroComponent() {
+                function HeroComponent(_heroService) {
+                    this._heroService = _heroService;
                     this.title = 'Tour of Heroes';
-                    this.heroes = HEROES;
-                    this.selectedHero = HEROES[0];
                 }
-                /**
-                 * edit
-                 */
+                HeroComponent.prototype.ngOnInit = function () {
+                    this.getHeroes();
+                };
                 HeroComponent.prototype.edit = function (hero) {
                     this.selectedHero = hero;
+                };
+                HeroComponent.prototype.getHeroes = function () {
+                    var _this = this;
+                    this._heroService.getHeroesSlowly().then(function (value) { _this.heroes = value; });
                 };
                 HeroComponent = __decorate([
                     core_1.Component({
                         selector: 'hero',
                         templateUrl: '/app/hero/hero.component.html',
-                        styleUrls: ['app/hero/hero.component.css']
+                        styleUrls: ['app/hero/hero.component.css'],
+                        directives: [hero_detail_component_1.HeroDetailComponent],
+                        providers: [hero_service_1.HeroService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [hero_service_1.HeroService])
                 ], HeroComponent);
                 return HeroComponent;
             })();
