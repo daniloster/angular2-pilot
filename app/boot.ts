@@ -1,8 +1,11 @@
-import {bootstrap}    from 'angular2/platform/browser'
-import {GreetingComponent} from './greeting/greeting.component'
-import {HeroDetailComponent} from './hero/detail/hero-detail.component'
-import {HeroComponent} from './hero/hero.component'
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, APP_BASE_HREF} from "angular2/router"
+import {LocationStrategy, HashLocationStrategy, PathLocationStrategy} from "angular2/router"
+import {provide} from "angular2/core"
+import {CORE_DIRECTIVES} from "angular2/common"
+import {AppRouter} from './app.router'
+import {bootstrap} from 'angular2/platform/browser'
 
-bootstrap(GreetingComponent);
-bootstrap(HeroDetailComponent);
-bootstrap(HeroComponent);
+bootstrap(AppRouter,
+    [ROUTER_PROVIDERS,
+    provide(LocationStrategy, { useClass: PathLocationStrategy }),
+    provide(APP_BASE_HREF, { useValue: '/' })])

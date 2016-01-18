@@ -1,31 +1,38 @@
-import {Component} from 'angular2/core';
-import {Hero} from './hero';
-import {HeroDetailComponent} from './detail/hero-detail.component';
-import {HeroService} from './hero.service';
-import {OnInit} from 'angular2/core';
+import {Component, View} from 'angular2/core'
+import {RouteConfig, AsyncRoute, Route} from 'angular2/router'
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouterLink, RouterOutlet} from 'angular2/router'
+import {CORE_DIRECTIVES} from 'angular2/common'
+// import {Router, Location} from 'angular2/router'
+import {HeroListComponent} from '../hero/list/hero-list.component'
+import {HeroDetailComponent} from '../hero/detail/hero-detail.component'
+import {heroServiceInjector} from './hero.service.injector'
+
+declare var System: any;
 
 @Component({
-    selector:'hero',
-    templateUrl: '/app/hero/hero.component.html',
-    styleUrls: ['app/hero/hero.component.css'],
-    directives: [HeroDetailComponent],
-    providers: [HeroService]
+    selector: 'hero-router',
+    template: `
+        <router-outlet></router-outlet>
+    `,
+    directives: [ROUTER_DIRECTIVES]
 })
-export class HeroComponent implements OnInit {
-    constructor(private _heroService: HeroService) { }
-    public title = 'Tour of Heroes';
-    public heroes;
-    public selectedHero: Hero;
-    
-    ngOnInit() {
-        this.getHeroes();
-    }
-    
-    public edit(hero : Hero) {
-        this.selectedHero = hero;
-    }
-    
-    public getHeroes() {
-        this._heroService.getHeroesSlowly().then((value: Hero[]) => { this.heroes = value; });
+@RouteConfig([
+    // new AsyncRoute({
+    new Route({
+        path: "/",
+        name: "Heroes",
+        // loader: () => ComponentHelper.LoadComponentAsync('HeroListComponent','/app/hero/list/hero-list.component')
+        component: HeroListComponent,
+        useAsDefault: true
+    }),
+    // new AsyncRoute({
+    new Route({
+        path: "/:id/detail",
+        name: "HeroDetail",
+        // loader: () => ComponentHelper.LoadComponentAsync('HeroDetailComponent','/app/hero/detail/hero-detail.component')
+        component: HeroDetailComponent
+    })
+]) export class HeroComponent {
+    constructor() {
     }
 }

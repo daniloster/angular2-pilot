@@ -1,58 +1,38 @@
 <html>
 
-  <head>
+<head>
     <title>Angular 2 QuickStart</title>
 
+    <base href="/">
     <!-- 1. Load libraries -->
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="/node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="/node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="/node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="/node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="/node_modules/angular2/bundles/router.dev.js"></script>
+    <!--<script src="/node_modules/angular2/bundles/angular2-all.umd.dev.js"></script>-->
 
     <!-- 2. Configure SystemJS -->
     <script>
-      System.config({
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('app/boot')
+        System.config({
+            packages: {
+                '/app/': {
+                    format: 'register',
+                    defaultExtension: 'js',
+                    defaultJSExtensions: true
+                }
+            }
+        });
+        System.import('/app/boot')
             .then(null, console.error.bind(console));
     </script>
+</head>
 
-  </head>
-
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-    <hero>Loading Hero...</hero>
-  </body>
+<body>
+    <!-- 3. Display the application -->
+    <my-app></my-app>
+</body>
 
 </html>
-<!--
-    
-
-
-  # Change Log Type in Settings tab
-  # Check Log Key is present in Settings tab
-  #
-  #
-  # "li" element to activate the settings tab
-  #  #heading-menu-list-item heading-menu-list-item-settings shift
-  #
-  #
-  # Log entries are sent via
-  # Token TCP: token
-  # Plain TCP, UDP: syslog
-  # Agent...: agent
-  # HTTP PUT: api
-  #
-  # Log periodicity
-  # Default time period: d
-  # Specific time period...: s
-  #Placeholder e.g. heroku
-  #
-    -->
