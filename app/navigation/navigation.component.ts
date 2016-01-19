@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core'
-import {CORE_DIRECTIVES} from 'angular2/common'
+import {CORE_DIRECTIVES, COMMON_DIRECTIVES} from 'angular2/common'
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from 'angular2/router'
 import {Router, Location} from 'angular2/router'
 
@@ -23,18 +23,12 @@ import {HeroDetailComponent} from '../hero/detail/hero-detail.component'
             </div>
         </div>
     `,
-    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, COMMON_DIRECTIVES],
     providers: [ROUTER_PROVIDERS]
-}) export class Navigation {
-    router: Router;
-    location: Location;
-    constructor(router: Router, location: Location) {
-        this.router = router;
-        this.location = location;
-    }
+}) export class NavigationComponent {
+    constructor(private _router: Router, private _location: Location) { }
     
     getLinkStyle(path) {
-        // console.log('getLinkStyle', path);
-        return this.location.path() === path;
+        return this._location.path() === path;
     }
 }

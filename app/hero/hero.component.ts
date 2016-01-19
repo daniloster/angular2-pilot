@@ -1,7 +1,7 @@
 import {Component, View} from 'angular2/core'
 import {RouteConfig, AsyncRoute, Route} from 'angular2/router'
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouterLink, RouterOutlet} from 'angular2/router'
-import {CORE_DIRECTIVES} from 'angular2/common'
+import {COMMON_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/common'
 // import {Router, Location} from 'angular2/router'
 import {HeroListComponent} from '../hero/list/hero-list.component'
 import {HeroDetailComponent} from '../hero/detail/hero-detail.component'
@@ -14,7 +14,8 @@ declare var System: any;
     template: `
         <router-outlet></router-outlet>
     `,
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES],
+    providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
     // new AsyncRoute({

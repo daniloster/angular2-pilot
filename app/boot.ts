@@ -6,6 +6,6 @@ import {AppRouter} from './app.router'
 import {bootstrap} from 'angular2/platform/browser'
 
 bootstrap(AppRouter,
-    [ROUTER_PROVIDERS,
+    [ROUTER_PROVIDERS/*,
     provide(LocationStrategy, { useClass: PathLocationStrategy }),
-    provide(APP_BASE_HREF, { useValue: '/' })])
+    provide(APP_BASE_HREF, { useValue: '/' })*/])
