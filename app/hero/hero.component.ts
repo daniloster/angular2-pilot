@@ -12,28 +12,30 @@ declare var System: any;
 @Component({
     selector: 'hero-router',
     template: `
-        <router-outlet></router-outlet>
+        <h2>Heroes container view</h2>
+        <div>
+            <router-outlet></router-outlet>
+        <div>
     `,
-    directives: [ROUTER_DIRECTIVES],
-    providers: [ROUTER_PROVIDERS]
+    directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
     // new AsyncRoute({
-    new Route({
+    ({
         path: "/",
         name: "Heroes",
         // loader: () => ComponentHelper.LoadComponentAsync('HeroListComponent','/app/hero/list/hero-list.component')
-        component: HeroListComponent,
-        useAsDefault: true
+        component: HeroListComponent
     }),
     // new AsyncRoute({
-    new Route({
-        path: "/:id/detail",
+    ({
+        path: "/:id",
         name: "HeroDetail",
         // loader: () => ComponentHelper.LoadComponentAsync('HeroDetailComponent','/app/hero/detail/hero-detail.component')
         component: HeroDetailComponent
     })
 ]) export class HeroComponent {
     constructor() {
+        console.log('HeroComponent');
     }
 }

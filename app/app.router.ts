@@ -24,18 +24,19 @@ import {HeroComponent} from './hero/hero.component'
                     <a [routerLink]="['Home']">Home</a>
                 </div>
                 <div class="nav-item" [class.active]="getLinkStyle('/heroes')">
-                    <a [routerLink]="['Heroes']">Heroes</a>
+                    <a [routerLink]="['Heroes', 'Heroes']">Heroes</a>
                 </div>
             </div>
         </div>
-        <router-outlet></router-outlet>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
     `,
-    directives: [ROUTER_DIRECTIVES/*, NavigationComponent*/],
-    providers: [ROUTER_PROVIDERS]
+    directives: [ROUTER_DIRECTIVES/*, NavigationComponent*/]
 })    
 @RouteConfig([
     // new AsyncRoute({
-    new Route({
+    ({
         path: "/home",
         name: "Home",
         // loader: () => ComponentHelper.LoadComponentAsync('HomeComponent','/app/home.component'),
@@ -43,7 +44,7 @@ import {HeroComponent} from './hero/hero.component'
         useAsDefault: true
     }),
     // new AsyncRoute({
-    new Route({
+    ({
         path: "/heroes/...",
         name: "Heroes",
         // loader: () => ComponentHelper.LoadComponentAsync('HeroComponent','/app/hero/hero.component')

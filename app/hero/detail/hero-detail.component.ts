@@ -1,4 +1,4 @@
-import {Component, Inject} from 'angular2/core'
+import {Component, Inject, OnInit} from 'angular2/core'
 import {COMMON_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/common'
 import {RouterLink, RouteParams, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {Hero} from '../hero'
@@ -9,22 +9,20 @@ import {NavigationComponent} from '../../navigation/navigation.component'
 @Component({
     selector: 'hero-detail',
     templateUrl: '/app/hero/detail/hero-detail.component.html',
-    styleUrls: ['/app/hero/detail/hero-detail.component.css'],
+    styleUrls: ['app/hero/detail/hero-detail.component.css'],
     directives:[ROUTER_DIRECTIVES, CORE_DIRECTIVES, COMMON_DIRECTIVES/*, NavigationComponent*/],
     providers: [heroServiceInjector, ROUTER_PROVIDERS]
 })
-export class HeroDetailComponent {
-    id: any;
+export class HeroDetailComponent implements OnInit {
     public hero: Hero;
     
-    constructor(@Inject('HeroServiceInterface') private _heroService: HeroServiceInterface, params: RouteParams) {
-        this.id = params.get('id');
-        console.log('HeroDetailComponent', this.id);
-        this.getHero();
+    constructor(@Inject('HeroServiceInterface') private _heroService: HeroServiceInterface, private _routeParams:RouteParams) {
+        console.log('HeroDetailComponent');
     }
     
-    getHero() {
-        this._heroService.getHeroSlowly(this.id).then((value: Hero) => {
+    ngOnInit() {
+        let id = this._routeParams.get('id');
+        this._heroService.getHeroSlowly(id).then((value: Hero) => {
             this.hero = value;
             console.log(value);
         });
