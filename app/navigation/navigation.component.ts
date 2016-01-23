@@ -15,10 +15,10 @@ import {HeroDetailComponent} from '../hero/detail/hero-detail.component'
             <h2>Navigation:</h2>
             <div>
                 <div class="nav-item" [class.active]="getLinkStyle('/home')">
-                    <a [routerLink]="['Home']">Home</a>
+                    <a [routerLink]="['/Home']">Home</a>
                 </div>
                 <div class="nav-item" [class.active]="getLinkStyle('/heroes')">
-                    <a [routerLink]="['Heroes']">Heroes</a>
+                    <a [routerLink]="['/Heroes', 'Heroes']">Heroes</a>
                 </div>
             </div>
         </div>
